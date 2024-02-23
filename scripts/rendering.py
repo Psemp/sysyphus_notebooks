@@ -3,7 +3,9 @@ import pandas as pd
 from models.meteorite import Meteorite
 
 
-def show_properties(meteorite_list: list, omit: list = [], as_pd: bool = True) -> dict | pd.DataFrame:
+def show_properties(
+        meteorite_list: list, omit: list = [],
+        as_pd: bool = True, get_duds: bool = False) -> dict | pd.DataFrame:
     """
     Function:
     - Collects and displays properties of meteorite objects in a structured format.
@@ -17,6 +19,7 @@ def show_properties(meteorite_list: list, omit: list = [], as_pd: bool = True) -
         - meteorite_list (list): A list of Meteorite objects whose properties are to be displayed.
         - omit (list): A list of property names (strings) to be omitted from the output.
         - as_pd (bool): If True, returns the data as a pandas DataFrame; otherwise, returns a dictionary.
+        - get_duds : whether or not to give the number of duds (main table not found)
 
     Returns:
         pd.DataFrame | dict: A pandas DataFrame or dictionary containing the collected meteorite properties,
@@ -26,12 +29,14 @@ def show_properties(meteorite_list: list, omit: list = [], as_pd: bool = True) -
     Raises:
         TypeError: If any object in `meteorite_list` is not an instance of the Meteorite class.
     """
+    duds = 0
+
     for meteorite in meteorite_list:
         if not isinstance(meteorite, Meteorite):
             raise TypeError(f"At least one of the objects ({meteorite}) is not of the class Meteorite")
 
     columns = [
-            "name", "type", "latitude", "longitude", "fall_country", "weathering_g", "shock_stage",
+            "name", "type", "coordinates", "latitude", "longitude", "fall_country", "weathering_g", "shock_stage",
             "mag_sus", "fs_content", "wo_content", "fa_content", "tsm", "pieces", "type_spec_loc"
             ]
 
@@ -39,9 +44,13 @@ def show_properties(meteorite_list: list, omit: list = [], as_pd: bool = True) -
     data_dict = {property: [] for property in columns}
 
     for meteorite in meteorite_list:
+        if meteorite.table_soup is None:
+            duds += 1
         for property in columns:
             value = getattr(meteorite, property, None)
             data_dict[property].append(value)
+
+    print(f"Duds : {duds}")
 
     if as_pd:
         df = pd.DataFrame(data_dict)

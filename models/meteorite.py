@@ -12,7 +12,7 @@ from scripts.preprocessing import handle_coordinates, remove_uncertainty
 class Meteorite:
     def __init__(
             self, name: str, year: str, country: str,
-            type: str, mass: str, url: str, bulletin: str
+            type: str, mass: str, url: str,
             ) -> None:
 
         self.name = name
@@ -29,29 +29,12 @@ class Meteorite:
         elif country is None:
             self.fall_country = "unknown"
 
-        self.type = re.sub(r"[^\w\s]", "", type)
-        self.url = url
-
-        mass = mass.replace(",", ".")
-        if not isinstance(mass, float) and "kg" in mass.lower():
-            mass_kg = re.findall(pattern=r"[\d.]+", string=mass)
-            if mass_kg:
-                self.mass = float(mass_kg[0]) * 1_000
-            else:
-                self.mass = np.nan
-        elif isinstance(mass, float):
-            self.mass = mass
-
-        elif not isinstance(mass, float) and "g" in mass.lower() and "k" not in mass.lower():
-            mass_grams = re.findall(pattern=r"[\d.]+", string=mass)
-            if mass_grams:
-                self.mass = float(mass_grams[0])
-        elif isinstance(mass, float):
-            self.mass = mass
+        if type is not None and not pd.isna(type):
+            self.type = re.sub(r"[^\w\s]", "", type)
         else:
-            self.mass = np.nan
-
-        self.bulletin = bulletin
+            self.type = None
+        self.url = url
+        self.mass = mass
 
         self.latitude = np.nan
         self.longitude = np.nan
@@ -134,7 +117,7 @@ class Meteorite:
                 print("The table couldnt be found")
                 print(f"You can find more informations for this meteorite here : {self.url}")
 
-        self.coordiates = handle_coordinates(latitude=self.latitude, longitude=self.longitude)
+        self.coordinates = handle_coordinates(latitude=self.latitude, longitude=self.longitude)
 
         if self.fa_content is not None:
             self.fa_content = remove_uncertainty(to_process=self.fa_content)
@@ -148,7 +131,7 @@ class Meteorite:
     def get_properties(self, as_pd: bool = False):
 
         property_dict = {
-                "Name": self.name, "Year": self.fall_year, "Coordinates (dec)": self.coordiates,
+                "Name": self.name, "Year": self.fall_year, "Coordinates (dec)": self.coordinates,
                 "Weathering grade": self.weathering_g, "Magnetic susceptibility": self.mag_sus,
                 "Ferrosilite": self.fs_content, "Fayalite": self.fa_content,
                 "Type specific mass": self.tsm, "Pieces": self.pieces,

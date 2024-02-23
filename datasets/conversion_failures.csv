@@ -1,0 +1,38 @@
+name,type,coordinates,latitude,longitude,fall_country,weathering_g,shock_stage,mag_sus,fs_content,wo_content,fa_content,tsm
+Grove Mountains 020351,L6,"(nan, nan)","72°59'02""S","75°14'47""E",Antarctica,W1,S1,,20.6,1.4,24.4,
+Grove Mountains 022777,L6,"(nan, nan)","72°46'30""S","75°19'47""E",Antarctica,W1,S4,,20.6,1.4,24.2,
+Grove Mountains 053498,L6,"(nan, nan)","72°46'44""S","75°19'00""E",Antarctica,W1,S3,,20.3,1.7,23.6,
+Grove Mountains 051612,H5,"(nan, nan)","72°49'46""S","75°16'43""E",Antarctica,W2,S2,,17.2,1.4,19.7,
+Grove Mountains 054458,H6,"(nan, nan)","72°54'57""S","75°06'03""E",Antarctica,W1,S1,,16.9,1.6,19.5,
+Grove Mountains 051706,L4,"(nan, nan)","72°46'49""S","75°19'35""E",Antarctica,W1,S3,,20.7,1.6,23.7,
+Forrest 029,H35,"(nan, nan)",30°43.89'5,127°56.35'E,Australia,C,S3,,17.7,,19.1,
+Grove Mountains 022365,L5,"(nan, nan)","72°46'52""S","75°18'18""E",Antarctica,W1,S3,,20.8,1.7,23.7,
+Dominion Range 18291,Eucritebr,"(nan, nan)",-85.6317,166.9300,Antarctica,A,,,25.0,,,15.88
+Grove Mountains 052361,L6,"(nan, nan)","72°46'58""S","75°17'56""E",Antarctica,W1,S3,,20.2,1.6,23.8,
+Gheriat 002,L6,"(nan, nan)",30°30.4'N,12°12.9'E,Libya,,,,21.6,,24.3,
+Ramlat Fasad 008,H5,"(nan, nan)",18°58.064'N,53°18.111'E,Oman,W3,S2/3,,,,18.4,13.873
+Grove Mountains 020432,L5,"(nan, nan)","72°59'02""S","75°14'47""E",Antarctica,W2,S4,,19.79,1.62,23.39,0.26
+Grove Mountains 020472,L5,"(nan, nan)","72°59'02""S","75°14'47""E",Antarctica,W2,S4,,20.49,1.33,23.8,0.24
+Grove Mountains 021538,L5,"(nan, nan)","72°57'47""S","75°13'53""E",Antarctica,W1,S3,,21.1,,24.82,4.85
+Grove Mountains 020571,L5,"(nan, nan)","72°59'03""S","75°14'49""E",Antarctica,W1,S2,,20.2,1.6,23.8,
+Al Huqf 054,L6,"(nan, nan)",19°36.967'N,57°16.188'E,Oman,W4,,4.42,,,,20
+Dhofar 1912,H5,"(nan, nan)",18°50.752'N,54°52.494'E,Oman,W3,,4.84,,,,20.4
+Sierra Gorda 108,L6,"(nan, nan)",22°30.43'S,69°8.23'W,Chile,W2,S1,,20.4,1.5,24.1,4.8
+Dhofar 069,H4,"(nan, nan)",19°9.52'N,54°43.86'E,Oman,W3,S2,,16.4,,18.4,38.9
+Frontier Mountain 99035,H34,"(nan, nan)","72°59'24""S","160°24'08""E",Antarctica,W2,S2,,17.0,,17.0,
+Jiddat al Harasis 055,L45,"(nan, nan)",19°39.1'N,55°41.4'E,Oman,W3,S2,,21.7,1.8,25.6,1506
+Grove Mountains 020549,L5,"(nan, nan)","72°59'02""S","75°14'47""E",Antarctica,W2,S3,,20.0,1.44,23.86,0.07
+Miller Range 15038,L6,"(nan, nan)",-83.5651,157.083,Antarctica,Ce,,4.65,22.0,,25.0,196.7
+Grove Mountains 050204,L4,"(nan, nan)","72°58'27""S","75°16'30""E",Antarctica,W1,S2,,22.55,,23.47,9.71
+Dhofar 512,L5,"(nan, nan)",18°48.6'N,54°15.7'E,Oman,W2,S3,,22.0,1.7,24.9,62
+Dhofar 1402,L6,"(nan, nan)",19°4.938'N,54°46.702'E,Oman,W2,,4.42,,,,1.8
+Jiddat al Harasis 423,H4,"(nan, nan)",19°46.997N,56°24.836'E,Oman,W3,S3,,15.1,1.1,17.8,1457.3
+Beryozovka,H56,"(nan, nan)",52°39.86'N,76°55.26'E,Kazakhstan,W2,S3,,16.7,1.4,19.1,1468
+Dhofar 2059,H5,"(nan, nan)",19°08.495'N,54°50.673'E,Oman,W3,S2,,16.0,1.0,18.3,198.2
+Dhofar 014,LL7,"(nan, nan)",18°14.6'N,54°08.5'E,Oman,W1,S4,,24.3,,29.7,
+Grove Mountains 021605,L6,"(nan, nan)","72°57'46""S","75°13'32""E",Antarctica,W1,S5,,21.8,1.5,26.0,
+Grove Mountains 052570,L6,"(nan, nan)","72°46'51""S","75°18'13""E",Antarctica,W1,S1,,20.9,1.6,25.0,
+Kerman 179,H5,"(nan, nan)",30°48.033'N,57°50.067'E,Iran,W1-2,,4.79,,,,21
+Grove Mountains 054334,L4,"(nan, nan)",72°46'48''S,75°17'52''E,Antarctica,W1,S2,,20.47,,24.79,14.85
+Mohave Mountains,L6,"(nan, nan)",34°40.177'N,114°17.078'W,USA,W0/1,S2,,20.9,1.4,24.7,45.41
+Thiel Mountains 99017,L4,"(nan, nan)",85°09.807'S,94°51.417'W,Antarctica,A,S3,,21.1,,24.2,

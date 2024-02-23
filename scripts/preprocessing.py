@@ -4,47 +4,31 @@ import numpy as np
 
 def dms_to_decimal(dms: str) -> float:
     """
-    Converts DMS coordinates to decimal format, accommodating various formats.
-
-    Args:
-        dms (str): A string representing degrees, minutes, and seconds, e.g., "123°45'67.89\"W" or "22°22.87'S"
-
-    Returns:
-        float: The decimal representation of the DMS input.
+    Converts DMS coordinates to decimal format, accommodating various formats including simple degrees.
     """
-
-    if isinstance(dms, float):
-        dms = str(dms)
-    if dms is None or dms.lower() == "nan":
+    if dms is None or str(dms).lower() in ["nan", ""]:
         return np.nan
 
-    dms_cleaned = re.sub(r"\s+|~", "", str(dms))
+    dms_cleaned = re.sub(r"\s+|~", "", dms)
 
-    # Thanks autoregex.xyz !!
+    match = re.match(r"(\d+\.?\d*)°([NSWE])", dms_cleaned)
+    if match:
+        degrees, direction = match.groups()
+        decimal = float(degrees)
+        if direction in ('S', 'W'):
+            decimal *= -1
+        return decimal
 
-    match = re.match(r"(\d+)°(\d+\.?\d*)'(\d*\.?\d*)?\"?([NSWE])", dms_cleaned)
-    if not match:
-        return np.nan  # Return NaN for invalid formats
+    match = re.match(r"(\d+)°(\d+)'(\d*\.\d*)?\"?([NSWE])", dms_cleaned)
+    if match:
+        degrees, minutes, seconds, direction = match.groups()
+        seconds = float(seconds) if seconds else 0.0
+        decimal = float(degrees) + float(minutes) / 60 + seconds / 3600
+        if direction in ('S', 'W'):
+            decimal *= -1
+        return decimal
 
-    degrees, minutes, seconds, direction = match.groups()
-
-    # If seconds part is empty or not provided, set to 0.0
-    seconds = float(seconds) if seconds else 0.0
-
-    # Minutes and potential decimal part
-    if '.' in minutes:
-        minutes, fractional_minutes = [float(part) for part in minutes.split('.')]
-        seconds += fractional_minutes * 60
-    else:
-        minutes = float(minutes)
-
-    decimal = float(degrees) + minutes / 60 + seconds / 3600
-
-    # Adjust for direction
-    if direction in ('S', 'W'):
-        decimal *= -1
-
-    return decimal
+    return np.nan
 
 
 def handle_coordinates(latitude: str, longitude: str) -> tuple:
