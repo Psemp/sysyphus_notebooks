@@ -28,7 +28,7 @@ def get_behemoth():
     body_tag, html_tag = check_closing_tags_bytes(r.content)
 
     if body_tag and html_tag:
-        pass
+        print("HTML document complete")
     else:
         t_end = time.perf_counter()
         raise RuntimeError(f"The request appears to have failed, exiting after {round(t_end - t_zero, 4)}")
