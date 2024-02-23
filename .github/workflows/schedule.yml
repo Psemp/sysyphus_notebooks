@@ -1,0 +1,26 @@
+name: Write Timestamp Action
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # Runs at every minute
+
+jobs:
+  write-timestamp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Write current timestamp to file
+        run: python write_timestamp.py
+
+      - name: Commit changes
+        run: |
+          git add timestamp.txt
+          git commit -m "Update timestamp" -a || echo "No changes to commit"
+          git push
