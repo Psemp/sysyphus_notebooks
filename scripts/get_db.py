@@ -121,6 +121,8 @@ def df_handler(df: pd.DataFrame) -> pd.DataFrame:
     df["type"] = df["type"].replace("Unknown", pd.NA)
     # handling NA countries
     df["country"] = df["country"].replace("Unknown", pd.NA)
+    df["numeric_id"] = df["name"].apply(preprocessing.extract_numeric_id)
+    df["numeric_id"] = df["numeric_id"].astype("Int64")
 
     return df
 

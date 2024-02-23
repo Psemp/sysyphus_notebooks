@@ -134,3 +134,11 @@ def handle_types(type_str):
         return None
     else:
         return type_str
+
+
+def extract_numeric_id(name):
+    """
+    Extracts numeric characters from a meteorite name and converts them to an integer.
+    """
+    numeric_part = "".join(filter(str.isdigit, name))
+    return int(numeric_part) if numeric_part else None
