@@ -18,7 +18,7 @@ jobs:
           python-version: '3.10'
 
       - name: Write current timestamp to file
-        run: python scripts/write_timestamp.py
+        run: python scripts/test_gh_actions.py
 
       - name: Commit changes
         run: |
