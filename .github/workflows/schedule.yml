@@ -1,13 +1,12 @@
-name: Write Timestamp Action
+name: Update Datasets and Commit Changes
 
 on:
   schedule:
-    - cron: '0 0 1 * *'  # Runs at 00:00 UTC on the first day of every month
-
+    - cron: '0 0 1 * *'
   workflow_dispatch:
 
 jobs:
-  write-timestamp:
+  update-datasets:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -18,12 +17,16 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Write current timestamp to file
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Update datasets
         run: python update_datasets.py
 
       - name: Commit changes
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
-          git commit -m "Update timestamp" -a || echo "No changes to commit"
+          git add .  # Ensure to stage any changes. Adjust if needed to target specific files.
+          git commit -m "Update datasets" -a || echo "No changes to commit"
           git push
