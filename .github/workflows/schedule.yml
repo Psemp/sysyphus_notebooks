@@ -2,7 +2,8 @@ name: Write Timestamp Action
 
 on:
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '0 * * * *'  # Runs at the start of every hour
+
   workflow_dispatch:
 
 jobs:
