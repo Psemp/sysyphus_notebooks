@@ -4,8 +4,7 @@ from models.meteorite import Meteorite
 
 
 def show_properties(
-        meteorite_list: list, omit: list = [],
-        as_pd: bool = True, get_duds: bool = False) -> dict | pd.DataFrame:
+        meteorite_list: list, omit: list = [], as_pd: bool = True) -> dict | pd.DataFrame:
     """
     Function:
     - Collects and displays properties of meteorite objects in a structured format.
@@ -49,8 +48,6 @@ def show_properties(
         for property in columns:
             value = getattr(meteorite, property, None)
             data_dict[property].append(value)
-
-    print(f"Duds : {duds}")
 
     if as_pd:
         df = pd.DataFrame(data_dict)

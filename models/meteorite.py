@@ -100,7 +100,7 @@ class Meteorite:
         self.table_soup = None
         gc.collect()
 
-    def extract_properties(self):
+    def extract_properties(self, purge_after: bool = True):
         if self.table_soup is None:
             self.get_soup()
         if self.table_soup is not None:
@@ -127,6 +127,8 @@ class Meteorite:
 
         if self.wo_content is not None:
             self.wo_content = remove_uncertainty(to_process=self.wo_content)
+        if purge_after:
+            self.purge_html()
 
     def get_properties(self, as_pd: bool = False):
 
