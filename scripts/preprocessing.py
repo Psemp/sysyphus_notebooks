@@ -5,28 +5,39 @@ import numpy as np
 def dms_to_decimal(dms: str) -> float:
     """
     Converts DMS coordinates to decimal format, accommodating various formats including simple degrees.
+
+    Patterns are mostly formed via autoregex.xyz and GPT-4, both are better at explaining regex than any human
     """
-    if dms is None or str(dms).lower() in ["nan", ""]:
-        return np.nan
+    # On the off chance its already in a decimal format :
+    try:
+        return float(dms)
+    except ValueError:
+        if dms is None:
+            return np.nan
 
-    dms_cleaned = re.sub(r"\s+|~", "", dms)
+    dms_cleaned = re.sub(r"\s+", "", dms.replace("''", '"'))
+    dms_cleaned = dms_cleaned.replace("~", "")
+    # Match various DMS patterns
+    patterns = [
+        r"(\d+\.?\d*)°([NSWE])",  # Matches simple degrees with direction
+        r"(\d+)°(\d+\.?\d*)'([NSWE])",  # Matches degrees and decimal minutes with direction
+        r"(\d+)°(\d+)'(\d*\.?\d*)?\"?([NSWE])",  # Matches full DMS with optional seconds
+    ]
 
-    match = re.match(r"(\d+\.?\d*)°([NSWE])", dms_cleaned)
-    if match:
-        degrees, direction = match.groups()
-        decimal = float(degrees)
-        if direction in ('S', 'W'):
-            decimal *= -1
-        return decimal
+    for pattern in patterns:
+        match = re.match(pattern, dms_cleaned)
+        if match:
+            parts = match.groups()
+            degrees = float(parts[0])
+            minutes = float(parts[1]) if len(parts) > 2 else 0
+            seconds = float(parts[2]) if len(parts) > 3 else 0
+            direction = parts[-1]
 
-    match = re.match(r"(\d+)°(\d+)'(\d*\.\d*)?\"?([NSWE])", dms_cleaned)
-    if match:
-        degrees, minutes, seconds, direction = match.groups()
-        seconds = float(seconds) if seconds else 0.0
-        decimal = float(degrees) + float(minutes) / 60 + seconds / 3600
-        if direction in ('S', 'W'):
-            decimal *= -1
-        return decimal
+            # Calculate decimal value
+            decimal = degrees + minutes / 60 + seconds / 3600
+            if direction in ('S', 'W'):
+                decimal *= -1
+            return decimal
 
     return np.nan
 
@@ -46,7 +57,10 @@ def handle_coordinates(latitude: str, longitude: str) -> tuple:
     lat_decimal = dms_to_decimal(latitude)
     lon_decimal = dms_to_decimal(longitude)
 
-    return (lat_decimal, lon_decimal)
+    if lat_decimal is not np.nan and lon_decimal is not np.nan:
+        return (lat_decimal, lon_decimal)
+    else:
+        return (np.nan, np.nan)  # incomplete coordinates will yield a full error if just one param is na
 
 
 def remove_uncertainty(to_process: str) -> float:
