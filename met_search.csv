@@ -1,0 +1,17 @@
+name,type,coordinates,latitude,longitude,fall_country,weathering_g,shock_stage,mag_sus,fs_content,wo_content,fa_content,pieces,type_spec_loc
+Kumtag 013,L5,"(41.71666666666667, 93.79533333333333)",41°43'N,93°47.72'E,China,W2,S2,,20.1,1.6,23.7,1,PMO
+Kumtag 015,L5,"(nan, nan)",41°30'14.8,93°33'49.3,China,W3,,,20.9,1.4,24.4,hundreds,IGGCAS
+Kumtag 016,L5,"(41.49597222222222, 93.58041666666666)","41°29'45.5""N","93°34'49.5""E",China,W2,,,22.6,1.9,25.0,hundreds,IGGCAS
+Kumtag 017,L5,"(nan, nan)",41°30'31.7,93°29'14.0,China,W3,,,21.6,1.3,24.2,1,IGGCAS
+Kumtag 018,L5,"(nan, nan)",41°30'17.3,93°29'43.3,China,W2,,,21.4,1.1,24.1,1,IGGCAS
+Kumtag 019,L5,"(nan, nan)",41°31'18.6,93°28'39.0,China,W3,,,21.0,1.6,23.7,1,IGGCAS
+Kumtag 020,L5,"(nan, nan)",41°31'23.1,93°29'08.6,China,W3,,,22.7,1.1,25.3,1,IGGCAS
+Kumtag 022,L5,"(nan, nan)",41°31'12.1,93°29'14.4,China,W2,,,22.0,1.7,24.6,1,IGGCAS
+Kumtag 023,L5,"(nan, nan)",41°31'04.3,93°30'31.1,China,W2,,,20.7,1.2,23.5,1,IGGCAS
+Kumtag 024,L5,"(nan, nan)",41°31'04.8,93°28'58.9,China,W3,,,21.5,21.5,24.4,1,IGGCAS
+Kumtag 025,L5,"(nan, nan)",41°31'23.3,93°28'48.1,China,W2,,,20.7,1.7,24.4,1,IGGCAS
+Kumtag 026,L5,"(nan, nan)",41°31'26.0,93°28'32.8,China,W3,,,20.6,1.1,24.0,1,IGGCAS
+Kumtag 027,L5,"(nan, nan)",41°31'49.2,93°28'55.2,China,W2,,,22.3,2.0,25.8,1,IGGCAS
+Kumtag 028,L5,"(nan, nan)",41°31'40.14,93°28'01.2,China,W3,,,21.1,1.6,23.9,1,IGGCAS
+Kumtag 029,L5,"(nan, nan)",41°31'25.1,93°28'19.3,China,W2,,,21.2,1.4,24.3,1,IGGCAS
+Kumtag 030,L5,"(nan, nan)",41°30'12.3,93°30'19.3,China,W3,,,20.3,0.1,24.7,2,IGGCAS

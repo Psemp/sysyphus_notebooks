@@ -4,5 +4,3 @@ numpy
 tqdm
 python-dotenv
 requests
-jupyter
-jupyterlab
