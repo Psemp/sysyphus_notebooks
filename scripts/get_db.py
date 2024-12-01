@@ -1,6 +1,6 @@
-import requests
 import time
 import gc
+import cloudscraper
 
 import pandas as pd
 
@@ -14,6 +14,8 @@ def get_behemoth():
     """
     t_zero = time.perf_counter()
 
+    scraper = cloudscraper.create_scraper()
+
     headers = {
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0",
     }
@@ -23,7 +25,7 @@ def get_behemoth():
     All&srt=name&categ=All&mblist=All&rect=\
     &phot=&strewn=&snew=0&pnt=Normal%20table&dr=&page=1"""
 
-    r = requests.get(url=behemoth, headers=headers,)
+    r = scraper.get(url=behemoth, headers=headers,)
 
     body_tag, html_tag = check_closing_tags_bytes(r.content)
 
